@@ -53,7 +53,7 @@ public class SecurityConfig {
                 .formLogin((form) -> form
                         .permitAll()
                         .failureUrl("/login?error=BadCredentials")
-                        .defaultSuccessUrl("/matches", true)
+                        .defaultSuccessUrl("/main", true)
                 )
                 .logout((logout) -> logout
                         .logoutUrl("/logout")

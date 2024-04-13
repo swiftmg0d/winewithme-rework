@@ -1,17 +1,14 @@
-package com.project.winewithme.comonents;
+package com.project.winewithme.components;
 
 import com.project.winewithme.model.Address;
-import com.project.winewithme.model.Contact;
 import com.project.winewithme.model.Winery;
 import com.project.winewithme.repository.AddresRepository;
-import com.project.winewithme.repository.ContactRepository;
 import com.project.winewithme.repository.WineryRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
