@@ -9,11 +9,11 @@ import java.util.List;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Address {
     @Id
-    private  Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String address;
     private String street;
     private String city;
@@ -21,6 +21,14 @@ public class Address {
     private String location;
     private String plusCode;
     private String postalCode;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Winery>list0fWineries;
+
+    public Address(String address, String street, String countryCode, String city, String location, String postalCode, String plusCode) {
+        this.address = address;
+        this.street = street;
+        this.countryCode = countryCode;
+        this.city = city;
+        this.location = location;
+        this.postalCode = postalCode;
+        this.plusCode = plusCode;
+    }
 }
