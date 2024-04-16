@@ -7,17 +7,17 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import { useTranslation } from "react-i18next";
+
 import { Link } from "react-router-dom";
 
-const pages = ["Home", "About", "Contact"];
 export default function Header() {
+  const [t, i18n] = useTranslation();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
+  const pages = ["Home", "About", "Contact", i18n.language];
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -25,7 +25,9 @@ export default function Header() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === "en" ? "mk" : "en");
+  };
   return (
     <AppBar
       position="static"
@@ -124,7 +126,11 @@ export default function Header() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link to={"/" + page.toLowerCase()}>{page}</Link>
+                {page === "en" || page == "mk" ? (
+                  <span onClick={() => toggleLanguage()}>{t(page)}</span>
+                ) : (
+                  <Link to={"/" + page.toLowerCase()}>{t(page)}</Link>
+                )}
               </Button>
             ))}
           </Box>
