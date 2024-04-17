@@ -54,7 +54,7 @@ export default function Header() {
               textDecoration: "none",
             }}
           >
-            WineWithMe
+            {t("WineWithMe")}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -90,7 +90,11 @@ export default function Header() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={"/" + page.toLowerCase()}>{page}</Link>
+                    {page === "en" || page == "mk" ? (
+                      <span onClick={() => toggleLanguage()}>{t(page)}</span>
+                    ) : (
+                      <Link to={"/" + page.toLowerCase()}>{t(page)}</Link>
+                    )}
                   </Typography>
                 </MenuItem>
               ))}

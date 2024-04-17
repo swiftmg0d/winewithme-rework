@@ -2,10 +2,10 @@ import { Button } from "@mui/material";
 import Header from "../Header";
 import Background from "../Backgorund";
 import video from "../../assets/homepage.mp4";
-import { useTranslation } from "react-i18next";
 import { ReactTyped } from "react-typed";
 import { sentencesEN } from "../../constants/sentences_en";
 import { sentencesMK } from "../../constants/sentences_mk";
+import { useTranslation } from "react-i18next";
 
 export default function Homepage({ t, i18n }) {
   const buttonSX = {
@@ -28,7 +28,7 @@ export default function Homepage({ t, i18n }) {
       <div className="flex justify-center mt-5">
         <div>
           <Button variant="contained" size="medium" sx={buttonSX}>
-            {t("Let's Wine")}
+            <span className=" font-custom"> {t("Let's Wine")}</span>
           </Button>
         </div>
       </div>
@@ -41,7 +41,7 @@ function Main({ t, i18n }) {
       <div className="relative flex justify-center text-center mt-[250px] md:mt-[350px]  sm:mt-[250px] ">
         <div>
           <h1 className=" font-mono text-white mb-3 text-[25px] sm:text-[30px] md:text-[55px]">
-            WineWithMe
+            {t("WineWithMe")}
           </h1>
           <div className=" container ">
             <p
