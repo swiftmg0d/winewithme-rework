@@ -21,5 +21,7 @@
   "Your message": "Your message",
   "Submit": "Submit",
   "Contact information": "Contact information",
-  "Phone": "Phone"
+  "Phone": "Phone",
+  "Success": "Success! Your form has been successfully submitted. We appreciate your input!",
+  "Please fill the input field correctly!": "  Please fill the input field correctly!"
 }

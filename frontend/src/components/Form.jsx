@@ -8,17 +8,19 @@ import {
   Button,
 } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
+import { FormHelperText } from "@mui/joy";
 
 export default function Form({
   t,
-  username,
-  setUsername,
+  name,
+  setName,
   email,
   setEmail,
   subject,
   setSubject,
   message,
   setMessage,
+  valid,
 }) {
   return (
     <>
@@ -38,9 +40,12 @@ export default function Form({
           }}
         >
           <CustomInput
-            setValue={setUsername}
-            value={username}
+            t={t}
+            setValue={setName}
+            value={name}
             style={{ width: { sm: "50.5%", md: "100%" } }}
+            valid={valid}
+            input="name"
           >
             {t("Name")}
           </CustomInput>
@@ -51,8 +56,11 @@ export default function Form({
           }}
         >
           <CustomInput
+            t={t}
             setValue={setEmail}
             value={email}
+            valid={valid}
+            input="email"
             style={{ width: { sm: "50.5%", md: "100%" } }}
           >
             {t("Email")}
@@ -69,6 +77,9 @@ export default function Form({
       >
         <Box>
           <CustomInput
+            t={t}
+            valid={valid}
+            input="subject"
             setValue={setSubject}
             value={subject}
             style={{
@@ -79,6 +90,7 @@ export default function Form({
             {t("Subject")}
           </CustomInput>
         </Box>
+
         <Box
           sx={{
             display: "flex",
@@ -89,6 +101,7 @@ export default function Form({
           }}
         >
           <Textarea
+            required
             placeholder={t("Your message")}
             minRows={1}
             maxRows={2}
@@ -110,7 +123,7 @@ export default function Form({
                 borderBottom: "1px solid #589180",
               },
               backgroundColor: "transparent",
-              border: "1px solid grey",
+              border: valid["message"] ? "1px solid #A0153E" : "1px solid grey",
               width: { sm: "50%", md: "60%" },
               height: { sm: 50, md: 167, lg: 180 },
               marginTop: "-20px",
@@ -121,7 +134,7 @@ export default function Form({
     </>
   );
 }
-function CustomInput({ children, style, setValue, value }) {
+function CustomInput({ children, style, setValue, value, valid, input, t }) {
   const sxForm = {
     "& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused": {
       color: "#589180",
@@ -141,10 +154,19 @@ function CustomInput({ children, style, setValue, value }) {
           id="my-input"
           aria-describedby="my-helper-text"
           value={value}
+          error={valid[input]}
           onChange={(e) => {
             setValue(e.target.value);
           }}
         />
+        {valid[input] && (
+          <FormHelperText
+            id="my-helper-text"
+            sx={{ color: "#A0153E", fontSize: { xs: "10px" } }}
+          >
+            {t("Please fill the input field correctly!")}
+          </FormHelperText>
+        )}
       </FormControl>
     </>
   );
