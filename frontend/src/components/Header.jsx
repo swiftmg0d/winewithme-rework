@@ -12,12 +12,12 @@ import MenuItem from "@mui/material/MenuItem";
 import { useTranslation } from "react-i18next";
 
 import { Link } from "react-router-dom";
-
 export default function Header() {
-  const [t, i18n] = useTranslation();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [t, i18n] = useTranslation();
 
   const pages = ["Home", "About", "Contact", i18n.language];
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };

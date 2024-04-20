@@ -1,7 +1,10 @@
 package com.project.winewithme.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +24,17 @@ public class Winery {
     @ManyToOne
     private Address address;
 
-    public Winery(String title, String categoryName, String website, String phone, String totalScore, String reviewsCount, Address address) {
+    /**
+     * @param title
+     * @param categoryName
+     * @param website
+     * @param phone
+     * @param totalScore
+     * @param reviewsCount
+     * @param address
+     */
+    public Winery(String title, String categoryName, String website, String phone, String totalScore,
+            String reviewsCount, Address address) {
         this.title = title;
         this.categoryName = categoryName;
         this.website = website;

@@ -1,13 +1,14 @@
 import { Button } from "@mui/material";
-import Header from "../Header";
-import Background from "../Backgorund";
-import video from "../../assets/homepage.mp4";
+import Backgorund from "../components/Background";
+import video from "../assets/homepage.mp4";
+import Header from "../components/Header";
 import { ReactTyped } from "react-typed";
-import { sentencesEN } from "../../constants/sentences_en";
-import { sentencesMK } from "../../constants/sentences_mk";
+import { sentencesEN } from "../constants/sentences_en";
+import { sentencesMK } from "../constants/sentences_mk";
 import { useTranslation } from "react-i18next";
 
-export default function Homepage({ t, i18n }) {
+export default function Homepage() {
+  const [t, i18n] = useTranslation();
   const buttonSX = {
     boxShadow: 3,
     "&:hover": {
@@ -22,8 +23,8 @@ export default function Homepage({ t, i18n }) {
 
   return (
     <>
-      <Background video={video} />
-      <Header t={t} i18n={i18n} />
+      <Backgorund video={video} />
+      <Header />
       <Main t={t} i18n={i18n} />
       <div className="flex justify-center mt-5">
         <div>
