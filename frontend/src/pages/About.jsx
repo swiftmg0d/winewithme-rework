@@ -9,11 +9,11 @@ export default function About() {
     <>
       <Background video={video} />
       <Header />
-      <Main />
+      <Section />
     </>
   );
 }
-function Main() {
+function Section() {
   const [t] = useTranslation();
   return (
     <>

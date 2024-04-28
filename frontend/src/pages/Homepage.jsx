@@ -6,13 +6,14 @@ import { ReactTyped } from "react-typed";
 import { sentencesEN } from "../constants/sentences_en";
 import { sentencesMK } from "../constants/sentences_mk";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export default function Homepage() {
   const [t, i18n] = useTranslation();
   const buttonSX = {
     boxShadow: 3,
     "&:hover": {
-      backgroundColor: "#8d0801",
+      backgroundColor: "#C60D25",
       color: "#f8f9fa",
     },
     color: "black",
@@ -29,7 +30,9 @@ export default function Homepage() {
       <div className="flex justify-center mt-5">
         <div>
           <Button variant="contained" size="medium" sx={buttonSX}>
-            <span className=" font-custom"> {t("Let's Wine")}</span>
+            <span className=" font-custom">
+              <Link to={"/main"}>{t("Let's Wine")}</Link>
+            </span>
           </Button>
         </div>
       </div>

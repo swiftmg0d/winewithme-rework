@@ -5,7 +5,7 @@ import Container from "../components/Container";
 import Form from "../components/Form";
 import { Box, Button, Alert } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { wineWithMeService } from "../api/api";
 
 export default function Contact() {
@@ -13,11 +13,11 @@ export default function Contact() {
     <>
       <Background video={video} />
       <Header />
-      <Main />
+      <Section />
     </>
   );
 }
-function Main() {
+function Section() {
   const [t] = useTranslation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,15 +51,29 @@ function Main() {
       setIsCompleted(false);
       return;
     } else {
-      wineWithMeService.saveContact(name, email, subject, message);
-      setValid({
-        name: false,
-        email: false,
-        subject: false,
-        message: false,
-      });
-      resetForm();
-      setIsCompleted(true);
+      const response = wineWithMeService.saveContact(
+        name,
+        email,
+        subject,
+        message
+      );
+      response
+        .then((response) => {
+          if (response.status == 200) {
+            setValid({
+              name: false,
+              email: false,
+              subject: false,
+              message: false,
+            });
+            resetForm();
+            setIsCompleted(true);
+          }
+        })
+        .catch((error) => {
+          console.error("Error submitting form:", error);
+          setIsCompleted(false);
+        });
     }
   };
 

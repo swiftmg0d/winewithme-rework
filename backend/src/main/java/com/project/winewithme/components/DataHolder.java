@@ -22,7 +22,7 @@ public class DataHolder {
 
     @PostConstruct
     private void fillData() throws IOException {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("data.csv"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("../backend/data.csv"))) {
             if (addresRepository.count() == 0 && wineryRepository.count() == 0)
                 bufferedReader.lines().skip(1).forEach(this::createWineries);
         }
